@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser'
+import {NgModule} from '@angular/core'
+import {Routes, RouterModule} from '@angular/router'
+import { AppComponent } from './app.component'
+import { HomePageComponent } from './home-page/home-page.component'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+const routes: Routes = [
+  {path: 'home', component:HomePageComponent},
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'home'}
+];
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+  declarations: [AppComponent, HomePageComponent],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

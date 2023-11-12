@@ -7,17 +7,22 @@
             <label>
                 Iteration count
             </label>
-            <input type="number" value="5" id="iteration-number">
+            <input type="number" value="3" id="iteration-number" >
         </div>
         <div class="draw-button-container">
-            <button class="draw-button" id="draw-button">
+            <button class="draw-button" id="draw-button" (click)="onDrawClick()">
                 Draw
+            </button>
+        </div>
+        <div class="save-button-container">
+            <button class="save-button" (click)="onSaveClick()">
+                Save
             </button>
         </div>
     </div>
     <div class="fractal-content">
         <div class="fractal-container">
-            <canvas id="fractal-canvas">
+            <canvas #fractalCanvas id="fractal-canvas">
 
             </canvas>
         </div>

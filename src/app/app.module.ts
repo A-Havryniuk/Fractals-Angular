@@ -14,7 +14,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'Vischek-fractal', component: VischekFractalsPageComponent},
   {path: 'v', component: VischekFractalsPageComponent},
-  {path: 'color-schemas', component: ColorSchemasComponent}
+  {path: 'color-schemas', component: ColorSchemasComponent},
   {path: 'Mandelbrot-set', component: MandelbrotFractalPageComponent}
 ];
 

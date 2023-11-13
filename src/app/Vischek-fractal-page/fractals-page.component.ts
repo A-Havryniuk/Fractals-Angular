@@ -6,9 +6,9 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
   styleUrls: ['./fractals-page.component.sass']
 })
 export class VischekFractalsPageComponent implements OnInit {
-  private canvas! : HTMLCanvasElement;
+  private canvas!: HTMLCanvasElement;
   private ctx!: CanvasRenderingContext2D;
-  private iterNum! : number;
+  private iterNum!: number;
 
   ngOnInit() {
     console.log("onInit");
@@ -34,7 +34,7 @@ export class VischekFractalsPageComponent implements OnInit {
       console.log("draw fractal method");
       this.clearCanvas();
       this.ctx.fillStyle = 'white';
-      
+
       const canvasSize = this.canvas.width;
       this.clearCanvas();
       const centerX = this.canvas.width / 2;
@@ -43,18 +43,18 @@ export class VischekFractalsPageComponent implements OnInit {
     }
   }
 
-  drawVicsekFractal( x: number, y: number, size: number, iterations: number) {
+  drawVicsekFractal(x: number, y: number, size: number, iterations: number) {
     console.log("drawVischekFractal iteration:" + iterations);
-    if(iterations === 0) {
+    if (iterations === 0) {
       this.ctx.fillStyle = 'white';
       this.ctx.fillRect(x, y, size, size);
       return;
     } else {
-      const newSize = size/3;
-      for(let i = 0; i < 3; ++i) {
-        for(let j = 0; j < 3; ++j) {
-          if((i + j)%2 !== 0 || (i==1 && j==1)) {
-            this.drawVicsekFractal(x+i*newSize, y + j*newSize, newSize, iterations-1);
+      const newSize = size / 3;
+      for (let i = 0; i < 3; ++i) {
+        for (let j = 0; j < 3; ++j) {
+          if ((i + j) % 2 !== 0 || (i == 1 && j == 1)) {
+            this.drawVicsekFractal(x + i * newSize, y + j * newSize, newSize, iterations - 1);
           }
         }
       }
@@ -69,7 +69,11 @@ export class VischekFractalsPageComponent implements OnInit {
     console.log('Button clicked!');
     const iterationInput = document.getElementById('iteration-number') as HTMLInputElement;
     const iterations = parseInt(iterationInput.value, 10);
-    this.drawFractal(iterations);
+    if (iterations < 0) {
+      alert("Number of iterations cannot be less than 0")
+    } else {
+      this.drawFractal(iterations);
+    }
   }
 
   onSaveClick() {
@@ -77,7 +81,7 @@ export class VischekFractalsPageComponent implements OnInit {
     const a = document.createElement('a');
     a.href = imgData;
     a.download = 'vischek_fractal.png';
-    if(window.confirm("Do you want to download this image?")) {
+    if (window.confirm("Do you want to download this image?")) {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);

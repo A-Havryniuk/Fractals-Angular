@@ -1,0 +1,48 @@
+<div class="mandelbrot-julia-content">
+    <div class="control-and-julia-set">
+        <div class="fractal-control">
+            <div class="Fractal-name">
+                <h1>Mandelbrot and Julia sets</h1>
+            </div>
+            <div class="control-fields-buttons">
+                <div class="c-scale">
+                    <div class="const">
+                        <label>Enter c:</label>
+                        <input type="number" value="-2" id="constant-number-x" step="0.1" min="-2" max="1">
+                        <input type="number" value="-1" id="constant-number-y" step="0.1" min="-1" max="1">
+                    </div>
+                </div>
+                <div class="hex-buttons">
+                    <div class="hex">
+                        <label>Color scheme(HEX): </label>
+                        <input type="text" maxlength="6" value="000000" id="color-scheme">
+                    </div>
+                    <div class="draw-button-container" (click)="onDrawClick()">
+                        <button>
+                            DRAW
+                        </button>
+                    </div>
+                    <div class="save-button-container">
+                        <button>
+                            SAVE
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="julia-set-content">
+            <div class="julia-set-container">
+                <canvas id="Julia-set-canvas">
+
+                </canvas>
+            </div>
+        </div>
+    </div>
+    <div class="mandelbrot-set-content">
+        <div class="mandelbrot-set-container">
+            <canvas id="Mandelbrot-set-canvas">
+
+            </canvas>
+        </div>
+    </div>
+</div>

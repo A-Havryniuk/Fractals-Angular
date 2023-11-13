@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="img-control">
+        <div class="button-container">
+            <button (click)="openFileExplorer()">Load</button>
+            <input type="file" #fileInput style="display: none" (change)="handleFileInput($event)" accept="image/*">
+            <button (click)="saveImage()">Save</button>
+            <button (click)="loadOriginalImage()">Original</button>
+        </div>
+        <div>
+            <h3>Pixel Value:</h3>
+            <p>RGBA: ({{ rgbArray }})</p>
+            <p>HSV: ({{ hsvArray }})</p>
+            <p>CMYK: ({{ cmykArray }})</p>
+        </div>
+        <div>
+            <span>S: </span>
+            <input type="range" min="20" max="100" [value]="saturation" (input)="onSaturationChange($event)">
+            <span>{{saturation}}</span>
+            <br>
+            <span>V: </span>
+            <input type="range" min="20" max="100" [value]="value" (input)="onValueChange($event)">
+            <span>{{value}}</span>
+        </div>
+    </div>
+    <div class="img-content">
+        <canvas #canvas (click)="handleCanvasClick($event)"></canvas>
+    </div>
+</div>

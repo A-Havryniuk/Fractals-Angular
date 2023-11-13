@@ -13,6 +13,20 @@
             <p>CMYK: ({{ cmykArray }})</p>
         </div>
         <div>
+            <span>X:</span>
+            <input type="number" (input)="onX($event)">
+            <br>
+            <span>Y:  </span>
+            <input type="number" (input)="onY($event)">
+            <br>
+            <span>W:  </span>
+            <input type="number" (input)="onL($event)">
+            <br>
+            <span>H: </span>
+            <input type="number" (input)="onH($event)">
+            <br>
+        </div>
+        <div>
             <span>S: </span>
             <input type="range" min="20" max="100" [value]="saturation" (input)="onSaturationChange($event)">
             <span>{{saturation}}</span>

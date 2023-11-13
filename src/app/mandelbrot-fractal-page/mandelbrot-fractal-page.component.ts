@@ -105,7 +105,7 @@ export class MandelbrotFractalPageComponent implements OnInit {
   private drawJuliaSet(cX: number, cY: number) {
     const REAL_SET: { start: number; end: number } = { start: -1.5, end: 1.5 };
     const IMAGINARY_SET: { start: number; end: number } = { start: -0.5, end: 1.0 };
-    const colors: string[] = this.createColorGradient('#ff0000', '#0000ff', this.MAX_ITERATION);
+    const colors: string[] = this.createColorGradient('#000000', '#ffffff', this.MAX_ITERATION);
   
     for (let i = 0; i < this.WIDTH; i++) {
       for (let j = 0; j < this.HEIGHT; j++) {
@@ -163,6 +163,26 @@ export class MandelbrotFractalPageComponent implements OnInit {
     return gradientColors;
   }
   
+  onSaveClick() {
+    const imgData = this.canvas.toDataURL("image/png");
+    const a = document.createElement('a');
+    a.href = imgData;
+    a.download = 'mandelbrot.png';
+
+    const imgData2 = this.canvasJulia.toDataURL("image/png");
+    const a2 = document.createElement('a');
+    a2.href = imgData2;
+    a2.download = 'julia.png';
+
+    if (window.confirm("Do you want to download this images?")) {
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      document.body.appendChild(a2);
+      a2.click();
+      document.body.removeChild(a2);
+    }
+  }
   
   
   // Function to convert hex color to RGB

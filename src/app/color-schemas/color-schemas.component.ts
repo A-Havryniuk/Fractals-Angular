@@ -19,6 +19,11 @@ export class ColorSchemasComponent {
   saturation: number = 50;
   value: number = 50;
 
+  x: number = 0;
+  y: number = 0;
+  length: number = 0;
+  height: number = 0;
+
   openFileExplorer() {
     this.fileInput.nativeElement.click();
   }
@@ -90,7 +95,13 @@ export class ColorSchemasComponent {
     this.saturation = parseInt(target.value, 10);
     const ctx = this.canvas.nativeElement.getContext('2d');
 
-    const imageData = ctx?.getImageData(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
+    var l = this.length;
+    var h = this.height;
+    if(l == 0)
+      l = this.canvas.nativeElement.width - this.x;
+    if(h == 0)
+      h = this.canvas.nativeElement.height - this.y;
+    const imageData = ctx?.getImageData(this.x, this.y, l, h);
     if(imageData == undefined)
     {
       return;
@@ -113,7 +124,7 @@ export class ColorSchemasComponent {
       }
     }
 
-    ctx?.putImageData(imageData, 0, 0);
+    ctx?.putImageData(imageData, this.x, this.y, this.x, this.y, l, h);
   }
 
   onValueChange(event: Event) {
@@ -121,8 +132,13 @@ export class ColorSchemasComponent {
     this.value = parseInt(target.value, 10);
     const ctx = this.canvas.nativeElement.getContext('2d');
 
-    const imageData = ctx?.getImageData(0, 0, this.canvas.nativeElement.width, this.canvas.nativeElement.height);
-    if(imageData == undefined)
+    var l = this.length;
+    var h = this.height;
+    if(l == 0)
+      l = this.canvas.nativeElement.width - this.x;
+    if(h == 0)
+      h = this.canvas.nativeElement.height - this.y;
+    const imageData = ctx?.getImageData(this.x, this.y, l, h);    if(imageData == undefined)
     {
       return;
     }
@@ -144,7 +160,7 @@ export class ColorSchemasComponent {
       }
     }
 
-    ctx?.putImageData(imageData, 0, 0);
+    ctx?.putImageData(imageData, this.x, this.y, this.x, this.y, l, h);
   }
 
 
@@ -216,5 +232,22 @@ export class ColorSchemasComponent {
     const y = (1 - b - k) / (1 - k);
 
     return [Math.round(c * 255), Math.round(m * 255), Math.round(y * 255), Math.round(k * 255)];
+  }
+
+  onX(event: Event) {
+    var t = event.target as HTMLInputElement;
+    this.x = parseInt(t.value, 10);
+  }
+  onY(event: Event) {
+    var t = event.target as HTMLInputElement;
+    this.y = parseInt(t.value, 10);
+  }
+  onL(event: Event) {
+    var t = event.target as HTMLInputElement;
+    this.length = parseInt(t.value, 10);
+  }
+  onH(event: Event) {
+    var t = event.target as HTMLInputElement;
+    this.height = parseInt(t.value, 10);
   }
 }

@@ -1,0 +1,60 @@
+<div class="figure-content">
+    <div class="canvas-control">
+        <form #parametersForm="ngForm">
+            <h6>
+                Enter diagonal points:
+            </h6>
+            <div class="points-container">
+                <div class="first-point-container">
+                    <h6> First point:</h6>
+                    <div class="field-container">
+                        <label>X: </label>
+                        <input [(ngModel)]="p1.x" name="point1X" type="number" class="form-control" placeholder="X" />
+                        <label>Y: </label>
+                        <input [(ngModel)]="p1.y" name="point1Y" type="number" class="form-control" placeholder="Y" />
+                    </div>
+                </div>
+                <div class="second-point-container">
+                    <h6>Second point:</h6>
+                    <div class="field-container">
+                        <label>X: </label>
+                        <input [(ngModel)]="p2.x" name="point2X" type="number" class="form-control" placeholder="X" />
+                        <label>Y: </label>
+                        <input [(ngModel)]="p2.y" name="point2Y" type="number" class="form-control" placeholder="Y" />
+                    </div>
+                </div>
+            </div>
+            <div class="affine-transformation-control">
+                <div class="landslide-container">
+                    <label>Landslide: </label>
+                    <br>
+                    <input [(ngModel)]="landslideX" name="LandslideX" type="number" class="form-control" step="1" placeholder="landslide" value="0">
+                    <input [(ngModel)]="landslideY" name="LandslideY" type="number" class="form-control" step="1" placeholder="landslide" value="0">
+                </div>
+                <div class="rotate-container">
+                    <label>Rotate: </label>
+                    <input [(ngModel)]="rotate" name="Rotate" type="number" class="form-control" step="1" placeholder="rotate" value="0">
+                </div>
+                <div class="scale-container">
+                    <label>Scale: </label>
+                    <input [(ngModel)]="scale" name="Scale" type="number" class="form-control" step="1" placeholder="scale" value="1">
+                </div>
+                <div class="scale-container">
+                    <button (click)="emitEventToChild()">Apply</button>
+                </div>                
+            </div>
+        </form>
+    </div>
+    <div class="canvas-content">
+        <div class="canvas-container">
+            <div class="col-md-8 p-4">
+                <div class="border border-4 border-dark rounded-5 p-4">
+                    <div class="graph">
+                        <!-- Use the graph component with the parameters -->
+                        <graph [p1]="p1" [p2]="p2" [landslideX]="landslideX" [landslideY]="landslideY" [scale]="scale" [rotate]="rotate" [events]="eventsSubject.asObservable()"></graph>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

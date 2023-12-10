@@ -41,7 +41,8 @@
                 </div>
                 <div class="scale-container">
                     <button (click)="emitEventToChild()">Apply</button>
-                </div>                
+                    <button (click)="save()">Save</button>
+                </div>
             </div>
         </form>
     </div>
@@ -51,7 +52,7 @@
                 <div class="border border-4 border-dark rounded-5 p-4">
                     <div class="graph">
                         <!-- Use the graph component with the parameters -->
-                        <graph [p1]="p1" [p2]="p2" [landslideX]="landslideX" [landslideY]="landslideY" [scale]="scale" [rotate]="rotate" [events]="eventsSubject.asObservable()"></graph>
+                        <graph [p1]="p1" [p2]="p2" [landslideX]="landslideX" [landslideY]="landslideY" [scale]="scale" [rotate]="rotate" [events]="eventsSubject.asObservable()" [saveEvents]="saveSubject.asObservable()"></graph>
                     </div>
                 </div>
             </div>

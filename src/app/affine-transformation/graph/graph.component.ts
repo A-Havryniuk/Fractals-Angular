@@ -24,9 +24,11 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   @Input() scale: number = 1;
   @Output() transformationsApplied: EventEmitter<void> = new EventEmitter<void>();
   @Input() events?: Observable<void>;
+  @Input() saveEvents?: Observable<void>;
 
 
   private eventsSubscription?: Subscription;
+  private saveEventsSubscription?: Subscription;
 
 
   private p5Instance!: p5;
@@ -38,6 +40,7 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   }
   ngOnInit(): void {
     this.eventsSubscription = this.events?.subscribe(() => this.applyAffineTransformation());
+    this.saveEventsSubscription = this.saveEvents?.subscribe(() => this.save());
     this.container = this.graphContainer.nativeElement;
     this.calculateThirdAndFourthPoint();
     this.createCanvas();
@@ -52,6 +55,10 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
 
   ngOnChanges(changes: SimpleChanges) {
     if ('p1' in changes || 'p2' in changes || 'p3' in changes || 'p4' in changes || 'landslide' in changes || 'rotate' in changes || 'scale' in changes) {
+      console.log(this.p1.x + " " + this.p2.x)
+      this.p1 = changes['p1'].currentValue;
+      this.p2 = changes['p2'].currentValue;
+      console.log(this.p1.x + " " + this.p2.x)
       // this.calculateThirdAndFourthPoint();
       // this.applyAffineTransformation();
       // this.p5Instance.redraw();
@@ -62,6 +69,12 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
   ngOnDestroy() {
     this.p5Instance.remove();
     this.eventsSubscription?.unsubscribe();
+    this.saveEventsSubscription?.unsubscribe();
+  }
+
+  save() {
+    //Save
+    this.p5Instance.save("affine.png");
   }
 
   private applyAffineTransformation() {
@@ -83,8 +96,9 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
     // // Fourth corner
     // this.p4.x = xc + yd;
     // this.p4.y = yc - xd;
-    this.calculateThirdAndFourthPoint();
 
+    this.calculateThirdAndFourthPoint();
+    console.log(this.p1.x + " " + this.p1.y + " " + this.p2.x + " " + this.p2.y + " " + this.p3.x + " " + this.p3.y + " " + this.p4.x + " " + this.p4.y + " ")
     //Landslide
     this.p1.x += this.landslideX
     this.p2.x += this.landslideX
@@ -157,7 +171,6 @@ export class GraphComponent implements OnInit, AfterViewInit, OnChanges, OnDestr
       p.createCanvas(this.container.offsetWidth, this.container.offsetWidth);
       p.noLoop();
     };
-
     p.draw = () => {
       p.background(255);
 

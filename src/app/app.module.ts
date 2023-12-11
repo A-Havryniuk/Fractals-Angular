@@ -12,7 +12,6 @@ import { AffineTransformationComponent } from './affine-transformation/affine-tr
 import { GraphComponent } from './affine-transformation/graph/graph.component'
 import { FormsModule } from '@angular/forms';
 import { LearnPageComponent } from './learn-page/learn-page.component';
-import { YouTubePlayerModule } from '@angular/youtube-player';
 import { MandelbrotLearnComponent } from './mandelbrot-learn/mandelbrot-learn.component';
 import { VicsekLearnComponent } from './vicsek-learn/vicsek-learn.component';
 
@@ -30,8 +29,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, VischekFractalsPageComponent, HeaderComponent, FooterComponent, MandelbrotFractalPageComponent, AffineTransformationComponent, GraphComponent, MandelbrotLearnComponent, VicsekLearnComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), YouTubePlayerModule],
+  declarations: [AppComponent, HomePageComponent, VischekFractalsPageComponent, HeaderComponent, FooterComponent, MandelbrotFractalPageComponent, AffineTransformationComponent, GraphComponent],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

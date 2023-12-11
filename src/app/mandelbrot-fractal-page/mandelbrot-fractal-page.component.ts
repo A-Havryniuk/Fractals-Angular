@@ -97,6 +97,18 @@ export class MandelbrotFractalPageComponent implements OnInit {
     this.complexX = parseInt(XInput.value);
     this.complexY = parseInt(YInput.value);
 
+    if(this.complexX < -2 || this.complexX > 1)
+    {
+      alert('first paramter of c should be in range [-2; 1]')  
+      return;
+    }
+
+    if(this.complexY < -1 || this.complexY > 1)
+    {
+      alert('second paramter of c should be in range [-1; 1]')
+      return;
+    }
+
     const colorSchemInput = document.querySelector("#color-scheme") as HTMLInputElement;
     this.colorSchem = colorSchemInput.value;
     this.drawMandelbrotSet(this.colorSchem);

@@ -9,19 +9,23 @@
     display: flex
     justify-content: center
     align-items: center
-    margin-left: 0px  
 
-.mandelbrot-set-container,
+.mandelbrot-set-container
+    border: 1px solid #ffffff
+    margin: 50px 20px 0 20px
+    height: 92%
+
 .julia-set-container
     border: 1px solid #ffffff
-    margin: 20px
+    margin: 10px 20px 0 20px
+    height: 410px
 
 .Fractal-name
     margin: 38px 0 0 0
     background-color: black
     color: white
 
-.const    
+.const
     display: flex
     flex-direction: column
     align-items: left
@@ -31,7 +35,6 @@
     display: flex
     flex-direction: column
     align-items: left
-
 
 .hex-buttons
     margin: 0 0 0 5%
@@ -80,3 +83,16 @@ button
     border: none
     color: white
     font-size: 20px
+
+.info-icon
+    font-size: 24px
+    position: fixed
+    top: 20px
+    right: 300px
+    cursor: pointer
+    color: #fff
+    text-decoration: none
+    transition: color 0.3s ease
+
+    &:hover
+        color: #1e87f0

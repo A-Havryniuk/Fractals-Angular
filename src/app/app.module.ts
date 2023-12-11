@@ -11,18 +11,27 @@ import { MandelbrotFractalPageComponent } from './mandelbrot-fractal-page/mandel
 import { AffineTransformationComponent } from './affine-transformation/affine-transformation.component';
 import { GraphComponent } from './affine-transformation/graph/graph.component'
 import { FormsModule } from '@angular/forms';
+import { LearnPageComponent } from './learn-page/learn-page.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
+import { MandelbrotLearnComponent } from './mandelbrot-learn/mandelbrot-learn.component';
+import { VicsekLearnComponent } from './vicsek-learn/vicsek-learn.component';
+
 const routes: Routes = [
   {path: 'home', component:HomePageComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'Vischek-fractal', component: VischekFractalsPageComponent},
   {path: 'color-schemas', component: ColorSchemasComponent},
   {path: 'Mandelbrot-set', component: MandelbrotFractalPageComponent},
-  {path: 'affine-transformation', component: AffineTransformationComponent}
+  {path: 'affine-transformation', component: AffineTransformationComponent},
+  {path: 'learn-page', component: LearnPageComponent},
+  {path: 'mandelbrot-learn', component: MandelbrotLearnComponent},
+  {path: 'viscek-learn', component: VicsekLearnComponent}
+
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, VischekFractalsPageComponent, HeaderComponent, FooterComponent, MandelbrotFractalPageComponent, AffineTransformationComponent, GraphComponent],
-  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes)],
+  declarations: [AppComponent, HomePageComponent, VischekFractalsPageComponent, HeaderComponent, FooterComponent, MandelbrotFractalPageComponent, AffineTransformationComponent, GraphComponent, MandelbrotLearnComponent, VicsekLearnComponent],
+  imports: [BrowserModule, FormsModule, RouterModule.forRoot(routes), YouTubePlayerModule],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -28,3 +28,21 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/d292cfe9-8326-461f-80ef-f60a8172db18)
 
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/f12d8c8c-eca6-4527-866a-e32a2d1e157c)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/15f5b887-96ee-4d7f-b58e-2c5c2453af73)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/f1ff87da-b861-475e-b084-c9b1ec661d79)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/b205350e-b035-4824-a38f-7e961adcb587)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/408921d1-c428-430d-b2de-a52c76bd2573)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/42370062-e8e3-4d67-823e-14768f31a047)
+
+![image](https://github.com/A-Havryniuk/fractals-angular/assets/97782337/72de7051-17e4-4371-9575-233402cc1be4)
+
+
+
+
+
